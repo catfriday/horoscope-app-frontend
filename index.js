@@ -29,17 +29,18 @@ document.addEventListener("DOMContentLoaded", function(e){
         p.innerText = horoscope.text 
         div.appendChild(p)
 
-        
+        let container = document.querySelector('.container')
         const form = document.querySelector('.add-user-form')
         form.addEventListener("submit", (e) => {
             main.appendChild(div)
             e.preventDefault()
-            createUser(form)
+            createUser(form, container)
             form.reset()
+            // container.innerHTML = ""
     })
     }
 
-    function createUser(form){
+    function createUser(form, container){
         let bday = document.querySelector('#dob-day').value
         let month = document.querySelector('#dob-month').value
         let year = document.querySelector('#dob-year').value
@@ -62,8 +63,9 @@ document.addEventListener("DOMContentLoaded", function(e){
     .then(response => response.json())
     .then(horoscope => 
         renderHoroscope(horoscope),
-        userHoroscope(user, horoscope))
-}
+         userHoroscope(user, horoscope),
+         container.innerHTML = ""
+    )}
 
 function userHoroscope(user, horoscope){
    
@@ -90,22 +92,62 @@ function writeHoroscope(user){
     let formDiv = document.createElement('div')
     formDiv.id = 'new-horo'
     newForm.appendChild(formDiv)
-    let h3 = document.createElement('h3')
-    h3.innerText = "Leave a Horoscope for Someone Else!"
-    let label = document.createElement('label')
-    label.innerText = 'Horoscope Title'
-    formDiv.appendChild(label)
-    let input = document.createElement('input')
-    input.innerHTML = `
-    type="text"
-    name="title"
-    value=""
-    placeholder="Enter Title"
-    class="input-text"`
+    newForm.innerHTML = `
+    <br/>
+
+        <legend>Write A Horoscope for Someone Else!</legend>
+       
+          <label>Title:</label>
+          <input type = "text"
+                 name = "title"
+                 value = "" 
+                 placeholder= "title"
+                 class="input-text"
+                 />
+        
+        <br/>
+          <label>Horoscope:</label>
+            <textarea 
+                  id = "myTextArea"
+                  name = "text"
+                  value = ""
+                  placeholder= "Write New Horoscope Here"
+                  >
+            </textarea>
+            <br/>
+            <input
+                    type="submit"
+                    name="submit"
+                    value="Make Someone's Day Bright!"
+                    class="submit"
+                    id="new-horo-button
+                  />`
+
+    let main = document.querySelector('main')
+    main.appendChild(newForm)
     
-    console.log(newForm)
+    newForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+       submitNewHoro(user, newForm)
+       newForm.reset()
+    })
 }
 
-
+function submitNewHoro(user, newForm){
+    fetch(horoscopeUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            user_id: 1,
+            title: newForm.title.value,
+            text: newForm.text.value
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+}
 
 })

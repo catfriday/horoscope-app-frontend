@@ -14,12 +14,16 @@
 </head>
 
 <body>
-    <h1>Welcome to The People's Astrology!</h1>
+    <div id="horoscope-header">
+        <img src="/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/Add a heading.gif" width="250" height="250" class="marginauto" alt="centered image" >
+      </div>
+    <h1 class="title">Welcome to The People's Astrology!</h1>
+    <h4 style="text-align:center; vertical-align: center;">Get a Horoscope and Write a Horoscope for Someone Else</h3>
     <main> 
+      <!-- <fieldset id="field"> -->
         <div class="container">
-            <form class="add-user-form">
+            <form class="add-user-form" style="text-align:center; vertical-align: center;">
                 <div class="create-form">
-                    <h3>Get a Horoscope and Leave a Horoscope for Someone Else!</h3>
                     <label class="form-header">Please Enter Your Name:</label>
                     <input
                       type="text"
@@ -199,6 +203,7 @@
                       </select>
                     <br/>
                     <input
+                    id="horo-button"
                     type="submit"
                     name="submit"
                     value="See How Today Will Go!"
@@ -209,7 +214,7 @@
             </form>
 
         </div>
-
+      <!-- </fieldset> -->
 
     </main>
 
