@@ -56,15 +56,20 @@ document.addEventListener("DOMContentLoaded", function(e){
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            // 
             user 
         })
     })
     .then(response => response.json())
-    .then(horoscope => 
+    .then(user => 
+       { console.log(user.birthdate.zodiac_sign)
+            // if (user.birthdate.zodiac_sign = "Aquarius"){
+            //      console.log("Hello Auarius")}
+            // if (user.birthdate.zodiac_sign = "Pisces"){
+            //     return console.log("Hello Pisces")}
         renderHoroscope(horoscope),
-         userHoroscope(user, horoscope),
-         container.innerHTML = ""
+        userHoroscope(user, horoscope)
+         console.log(user),
+         container.innerHTML = ""}
     )}
 
 function userHoroscope(user, horoscope){
@@ -120,7 +125,6 @@ function writeHoroscope(user){
                     name="submit"
                     value="Make Someone's Day Bright!"
                     class="submit"
-                    id="new-horo-button
                   />`
 
     let main = document.querySelector('main')
@@ -141,13 +145,13 @@ function submitNewHoro(user, newForm){
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            user_id: 1,
+            user_id: user.id,
             title: newForm.title.value,
             text: newForm.text.value
         })
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console(data))      
 }
 
 })
