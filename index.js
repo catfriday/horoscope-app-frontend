@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     function renderHoroscope(horoscope){
         let main = document.querySelector('main')
-       
+        
+        let container = document.querySelector('.container')
+        
         let div = document.createElement('div')
         div.className = 'card'
         div.id = 'horo-div'
@@ -28,17 +30,24 @@ document.addEventListener("DOMContentLoaded", function(e){
         let p = document.createElement('p')
         p.innerText = horoscope.text 
         div.appendChild(p)
-
-        let container = document.querySelector('.container')
+        
         const form = document.querySelector('.add-user-form')
         form.addEventListener("submit", (e) => {
             main.appendChild(div)
             e.preventDefault()
             createUser(form, container)
             form.reset()
-            // container.innerHTML = ""
     })
     }
+
+    let signUp = document.querySelector('#sign-up')
+    signUp.addEventListener('click', (e) => {
+        let container = document.querySelector('.container')
+        let login = document.querySelector('.signup-login')
+        console.log(login)
+        container.style = "visibility: visible;"
+        login.innerHTML = ""
+    })
 
     function createUser(form, container){
         let bday = document.querySelector('#dob-day').value
@@ -56,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            user 
+            user
         })
     })
     .then(response => response.json())
@@ -68,8 +77,9 @@ document.addEventListener("DOMContentLoaded", function(e){
             //     return console.log("Hello Pisces")}
         renderHoroscope(horoscope),
         userHoroscope(user, horoscope)
-         console.log(user),
-         container.innerHTML = ""}
+         console.log(user)
+         container.innerHTML = ""
+       }
     )}
 
 function userHoroscope(user, horoscope){
