@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     horoscopeUrl = "http://localhost:3000/horoscopes/"
     usersUrl = "http://localhost:3000/users/"
     userHoroscopeUrl = "http://localhost:3000/user_horoscopes/"
+    loginUrl = "http://localhost:3000/users/login/"
     
     fetch(horoscopeUrl)
     .then(response => response.json())
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         let main = document.querySelector('main')
         
         let container = document.querySelector('.container')
-        
+
         let div = document.createElement('div')
         div.className = 'card'
         div.id = 'horo-div'
@@ -38,7 +39,20 @@ document.addEventListener("DOMContentLoaded", function(e){
             createUser(form, container)
             form.reset()
     })
-    }
+
+}
+
+    let loginDiv = document.querySelector('.login-form')
+    let loginForm = document.querySelector('#user-login')
+    let login = document.querySelector('#login')
+    let signUpLogin = document.querySelector('.signup-login')
+    login.addEventListener('click', (e)=> {
+        loginDiv.style = "visibility: visible;"
+        signUpLogin.innerHTML = ""
+        console.log(e)
+        formListener(loginForm)
+    })
+
 
     let signUp = document.querySelector('#sign-up')
     signUp.addEventListener('click', (e) => {
@@ -48,6 +62,64 @@ document.addEventListener("DOMContentLoaded", function(e){
         container.style = "visibility: visible;"
         login.innerHTML = ""
     })
+
+    // let login = document.querySelector('#login')
+    // login.addEventListener('click', (e) => {
+    //     let main = document.querySelector('main')
+    //     let signUpLogin = document.querySelector('.signup-login')
+    //     let loginForm = document.createElement('form')
+    //     loginForm.id = 'user-login'
+    //     loginForm.style = "text-align:center; vertical-align: center;"
+    //     loginForm.innerHTML = `
+    //     <label class="form-header">Please Enter Your Name:</label>
+    //         <br/>
+    //         <input
+    //         type="text"
+    //         name="name"
+    //         value=""
+    //         placeholder="Enter Your Name..."
+    //         class="input-text"
+    //         />
+    //         <br/>
+    //         <input
+    //                 id="login-button"
+    //                 type="submit"
+    //                 name="submit"
+    //                 value="See How Today Will Go!"
+    //                 class="submit"
+    //               />` 
+    //     main.appendChild(loginForm)
+    //     signUpLogin.innerHTML= ""
+
+    //     loginForm.addEventListener('submit', (e) => {
+            
+    //         e.preventDefault()
+    //         console.log(e)
+    //         userLogin(loginForm)
+            
+    //     })
+    // })
+
+function formListener(loginForm){
+    loginForm.addEventListener('submit', (e)=> {
+        e.preventDefault()
+        userLogin(loginForm)
+        console.log(e)
+    })
+}
+
+function userLogin(loginForm){
+//    let main = document.querySelector('main')
+//    main.appendChild(div)
+    fetch(loginUrl + loginForm.name.value)
+    .then(response => response.json())
+    .then(user =>{
+        renderHoroscope(horoscope),
+        userHoroscope(user, horoscope),
+        loginForm.innerHTML = ""
+         console.log(user)
+    })
+}
 
     function createUser(form, container){
         let bday = document.querySelector('#dob-day').value
@@ -69,12 +141,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         })
     })
     .then(response => response.json())
-    .then(user => 
-       { console.log(user.birthdate.zodiac_sign)
-            // if (user.birthdate.zodiac_sign = "Aquarius"){
-            //      console.log("Hello Auarius")}
-            // if (user.birthdate.zodiac_sign = "Pisces"){
-            //     return console.log("Hello Pisces")}
+    .then(user => { 
         renderHoroscope(horoscope),
         userHoroscope(user, horoscope)
          console.log(user)

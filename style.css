@@ -28,6 +28,13 @@ h1.title{
     color:black;
 }
 
+#login-button{
+    border-radius: 50px;
+    padding: 10px 10px;
+    background-color: rgb(250, 210, 110);
+    color:black;
+}
+
 #horoscope-header {
     display: flex;
     justify-content: center;
