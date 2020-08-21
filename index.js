@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         let main = document.querySelector('main')
         
         let container = document.querySelector('.container')
-
         let div = document.createElement('div')
         div.className = 'card'
         div.id = 'horo-div'
@@ -40,17 +39,21 @@ document.addEventListener("DOMContentLoaded", function(e){
             form.reset()
     })
 
+
+    let loginForm = document.querySelector('#user-login')
+    loginForm.addEventListener('submit', (e)=> {
+        main.appendChild(div)
+        e.preventDefault()
+        userLogin(loginForm)
+    })
 }
 
     let loginDiv = document.querySelector('.login-form')
-    let loginForm = document.querySelector('#user-login')
     let login = document.querySelector('#login')
     let signUpLogin = document.querySelector('.signup-login')
     login.addEventListener('click', (e)=> {
         loginDiv.style = "visibility: visible;"
         signUpLogin.innerHTML = ""
-        console.log(e)
-        formListener(loginForm)
     })
 
 
@@ -58,66 +61,19 @@ document.addEventListener("DOMContentLoaded", function(e){
     signUp.addEventListener('click', (e) => {
         let container = document.querySelector('.container')
         let login = document.querySelector('.signup-login')
-        console.log(login)
         container.style = "visibility: visible;"
         login.innerHTML = ""
     })
 
-    // let login = document.querySelector('#login')
-    // login.addEventListener('click', (e) => {
-    //     let main = document.querySelector('main')
-    //     let signUpLogin = document.querySelector('.signup-login')
-    //     let loginForm = document.createElement('form')
-    //     loginForm.id = 'user-login'
-    //     loginForm.style = "text-align:center; vertical-align: center;"
-    //     loginForm.innerHTML = `
-    //     <label class="form-header">Please Enter Your Name:</label>
-    //         <br/>
-    //         <input
-    //         type="text"
-    //         name="name"
-    //         value=""
-    //         placeholder="Enter Your Name..."
-    //         class="input-text"
-    //         />
-    //         <br/>
-    //         <input
-    //                 id="login-button"
-    //                 type="submit"
-    //                 name="submit"
-    //                 value="See How Today Will Go!"
-    //                 class="submit"
-    //               />` 
-    //     main.appendChild(loginForm)
-    //     signUpLogin.innerHTML= ""
-
-    //     loginForm.addEventListener('submit', (e) => {
-            
-    //         e.preventDefault()
-    //         console.log(e)
-    //         userLogin(loginForm)
-            
-    //     })
-    // })
-
-function formListener(loginForm){
-    loginForm.addEventListener('submit', (e)=> {
-        e.preventDefault()
-        userLogin(loginForm)
-        console.log(e)
-    })
-}
 
 function userLogin(loginForm){
-//    let main = document.querySelector('main')
-//    main.appendChild(div)
     fetch(loginUrl + loginForm.name.value)
     .then(response => response.json())
     .then(user =>{
+        console.log(user)
         renderHoroscope(horoscope),
         userHoroscope(user, horoscope),
         loginForm.innerHTML = ""
-         console.log(user)
     })
 }
 
@@ -171,6 +127,7 @@ function userHoroscope(user, horoscope){
 function writeHoroscope(user){
     let newForm = document.createElement('form')
     newForm.className = 'add-horo-form'
+    newForm.style = "text-align:center; vertical-align: center;"
     let formDiv = document.createElement('div')
     formDiv.id = 'new-horo'
     newForm.appendChild(formDiv)
@@ -228,7 +185,7 @@ function submitNewHoro(user, newForm){
         })
     })
     .then(response => response.json())
-    .then(data => console(data))      
-}
+    .then(data => console.log(data)
+    )}
 
 })
