@@ -17,6 +17,15 @@ body {
     line-height: 1.5;
 }
 
+/* #sign {
+    margin: 0;
+    padding: 0;
+}
+
+#message {
+    margin: 0;
+    padding: 0;
+} */
 
 h1.title{
     font-size: 48px;
@@ -25,6 +34,8 @@ h1.title{
     position: center;
     left: 15px;
     top: 15px;
+    /* margin: 0;
+    padding: 0; */
     
 }
 #horo-button{
@@ -60,6 +71,10 @@ h1.title{
     /* padding: 3rem; */
   }
 
+  .add-horo-form{
+    margin: 7rem
+  }
+
   .card {
     justify-content: center;
     text-align: center;
@@ -67,11 +82,11 @@ h1.title{
     /* border-radius: 50%; */
     color: black;
     border: black solid 1px;
-    padding: 1rem;
+    /* padding: 1rem; */
     width: 30rem;
     height: 30rem;
     display: inline-grid;
-    margin: 1rem 2rem;
+    margin: -7rem 2rem;
     box-shadow: 15px 10px 10px black;
     /* box-shadow: 3px 4px rgb(250, 210, 110); */
     display: block;
@@ -80,6 +95,8 @@ h1.title{
     animation: fadeInAnimation ease 5s; 
     animation-iteration-count: 1; 
     animation-fill-mode: forwards; 
+    /* margin: -30;  */
+    /* padding: 0;  */
   }
   @keyframes fadeInAnimation { 
     0% { 
@@ -95,3 +112,52 @@ h1.title{
     margin-left: auto;
     margin-right: auto;
 }
+
+/* .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  } */
