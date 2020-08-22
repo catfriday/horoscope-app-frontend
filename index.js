@@ -119,56 +119,70 @@ function userLogin(loginForm){
 function renderSign(month, day){
     let div = document.querySelector('#horo-div')
     let image = document.createElement('img')
+    let h4 = document.createElement('h4')
     image.width = '260'
     image.height = '260'
     image.alt = '"centered image"'
     div.appendChild(image)
+    div.appendChild(h4)
     if ((month.includes('02')) && (day >= 19 && day <= 29) || (month.includes('03')) && (day >= 01 && day <= 20)){
         console.log('hello pisces')
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/pisces.jpg"
+        h4.innerText = 'Pisces'
     }
     if  ((month.includes('03')) && (day >= 21 && day <= 31) || (month.includes('04')) && (day >= 01 && day <= 19)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/aries.jpg"
+        h4.innerText = 'Aries'
     }
 
     if  ((month.includes('04')) && (day >= 20 && day <= 30) || (month.includes('05')) && (day >= 01 && day <= 20)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/taurus.jpg"
+        h4.innerText = 'Taurus'
     }
 
     if  ((month.includes('05')) && (day >= 21 && day <= 31) || (month.includes('06')) && (day >= 01 && day <= 20)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/gemini.jpg"
+        h4.innerText = 'Gemini'
     }
 
     if  ((month.includes('06')) && (day >= 21 && day <= 30) || (month.includes('07')) && (day >= 01 && day <= 22)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/cancer.jpg"
+        h4.innerText = 'Cancer'
     }
 
     if  ((month.includes('07')) && (day >= 23 && day <= 31) || (month.includes('08')) && (day >= 01 && day <= 22)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/leo.jpg"
+        h4.innerText = 'Leo'
     }
 
     if  ((month.includes('08')) && (day >= 23 && day <= 31) || (month.includes('09')) && (day >= 01 && day <= 22)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/virgo.jpg"
+        h4.innerText = 'Virgo'
     }
 
     if  ((month.includes('09')) && (day >= 23 && day <= 30) || (month.includes('10')) && (day >= 01 && day <= 22)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/libra.jpg"
+        h4.innerText = 'Libra'
     }
 
     if  ((month.includes('10')) && (day >= 23 && day <= 31) || (month.includes('11')) && (day >= 01 && day <= 21)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/scorpio.jpg"
+        h4.innerText = 'Scorpio'
     }
 
     if  ((month.includes('11')) && (day >= 22 && day <= 30) || (month.includes('12')) && (day >= 01 && day <= 21)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/sagittarius.jpg"
+        h4.innerText = 'Sagittarius'
     }
 
     if  ((month.includes('12')) && (day >= 22 && day <= 31) || (month.includes('01')) && (day >= 01 && day <= 19)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/capricorn.jpg"
+        h4.innerText = 'Capricorn'
     }
 
     if  ((month.includes('01')) && (day >= 20 && day <= 31) || (month.includes('02')) && (day >= 01 && day <= 18)){
         image.src = "/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/signs_pics/aquarius.jpg"
+        h4.innerText = 'Aquarius'
     }
 
 }
