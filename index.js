@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     let loginDiv = document.querySelector('.login-form')
     let login = document.querySelector('#login')
+    login.style.cursor = "pointer"
     let signUpLogin = document.querySelector('.signup-login')
     login.addEventListener('click', (e)=> {
         loginDiv.style = "visibility: visible;"
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
     let signUp = document.querySelector('#sign-up')
+    signUp.style.cursor = "pointer"
     signUp.addEventListener('click', (e) => {
         let container = document.querySelector('.container')
         let login = document.querySelector('.signup-login')
@@ -105,7 +107,7 @@ function userLogin(loginForm){
     .then(response => response.json())
     .then(user => { 
         userName.innerHTML = `
-       <h3><b> Hello ${user.name}! 
+       <h3><b> Hello ${user.name}!
         <br/> 
         Here's today's horoscope</b></h3>`
         renderHoroscope(horoscope),
@@ -200,7 +202,7 @@ function userHoroscope(user, horoscope){
         })
     })
     .then(response => response.json())
-    .then(data => console.log(data),
+    .then(data => 
     writeHoroscope(user)
     )
 }
@@ -260,13 +262,26 @@ function submitNewHoro(user, newForm){
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            user_id: user.id,
+            author_id: user.id,
             title: newForm.title.value,
             text: newForm.text.value
         })
     })
     .then(response => response.json())
-    .then(data => console.log(data)
+    .then(data => 
+        fetchWrittenHoroscopes(user)
     )}
+
+function fetchWrittenHoroscopes(user){
+    fetch(usersUrl + user.id)
+    .then(response => response.json())
+    .then(data => writtenHoroscopes(data.written_horoscopes))   
+}
+
+function writtenHoroscopes(horoscopes){
+    horoscopes.forEach(horoscope => {
+        console.log(horoscope)
+    })
+}
 
 })

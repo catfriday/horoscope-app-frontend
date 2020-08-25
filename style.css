@@ -4,7 +4,7 @@ html, body {
 
 
 body {
-    font-family: palatino;
+    font-family: bodoni;
     font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: 0;
@@ -42,22 +42,30 @@ h1.title{
 #horo-button{
     border-radius: 50px;
     padding: 10px 10px;
-    background-color: rgb(250, 210, 110);
+    background-color:  rgb(252, 142, 123);
     color:black;
 }
 
 #login-button{
     border-radius: 50px;
     padding: 10px 10px;
-    background-color: rgb(250, 210, 110);
+    background-color:  rgb(252, 142, 123);
     color:black;
 }
 
 .submit{
     border-radius: 50px;
     padding: 10px 10px;
-    background-color: rgb(250, 210, 110);
+    background-color:  rgb(252, 142, 123);
     color:black;
+}
+
+#sign-up:hover{
+    color: rgb(252, 142, 123);
+}
+
+#login:hover{
+    color: rgb(252, 142, 123);
 }
 
 #horoscope-header {
@@ -133,12 +141,12 @@ h1.title{
   }
    
   .sidebar a.active {
-    background-color: #4CAF50;
+    background-color: rgb(252, 142, 123);
     color: white;
   }
   
   .sidebar a:hover:not(.active) {
-    background-color: #555;
+    background-color: black;
     color: white;
   }
   div.content {
