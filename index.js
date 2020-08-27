@@ -77,7 +77,7 @@ function userLogin(loginForm){
         renderHoroscope(horoscope),
         userHoroscope(user, horoscope),
         userName.innerHTML = `
-       <h3><b> Hello ${user.name}! 
+       <h3 class="greeting-message"><b> Hello ${user.name}! 
         <br/> 
         Here's today's horoscope</b></h3>`
         loginForm.innerHTML = ""
@@ -107,7 +107,7 @@ function userLogin(loginForm){
     .then(response => response.json())
     .then(user => { 
         userName.innerHTML = `
-       <h3><b> Hello ${user.name}!
+       <h3 class="greeting-message"><b> Hello ${user.name}!
         <br/> 
         Here's today's horoscope</b></h3>`
         renderHoroscope(horoscope),
@@ -242,7 +242,8 @@ function writeHoroscope(user){
                     name="submit"
                     value="Make Someone's Day Bright!"
                     class="submit"
-                  />`
+                  />
+            <h4 id='written-horoscope' >See My Written Horoscopes</h3>`
 
     let main = document.querySelector('main')
     main.appendChild(newForm)
@@ -251,6 +252,12 @@ function writeHoroscope(user){
         e.preventDefault()
        submitNewHoro(user, newForm)
        newForm.reset()
+    })
+
+    let h4 = document.querySelector('#written-horoscope')
+    h4.style.cursor = "pointer"
+    h4.addEventListener('click', (e) => {
+        fetchWrittenHoroscopes(user)
     })
 }
 
@@ -281,7 +288,50 @@ function fetchWrittenHoroscopes(user){
 function writtenHoroscopes(horoscopes){
     horoscopes.forEach(horoscope => {
         console.log(horoscope)
+       
+
+        renderWrittenHoroscopes(horoscope)
+        // console.log(horoscope)
     })
 }
+
+function renderWrittenHoroscopes(horoscope){
+ let main = document.querySelector('main')
+ let card = document.querySelector('#horo-div')
+ let greeting = document.querySelector('h3.greeting-message')
+//  greeting.remove()
+//  card.remove() 
+//  let horoCard = document.querySelector('#written-horo')
+ let div = document.createElement('div')
+ div.className = 'card2'
+ div.innerHTML = `
+ <h3>${horoscope.title}</h3>
+ <img src="/Users/catrinafriday/Development/code/horoscopes project/horoscope-app-frontend/The People's astrology (1).gif" width="115" height="115" class="center"/>
+ <p id="p">${horoscope.text}</p>
+ <div class="btn-group">
+ <button class="horo-btn">Edit</button><button class="horo-btn">Delete</button>
+ </div>`
+main.appendChild(div)
+//  horoCard.appendChild(div)
+ console.log(div)
+
+
+    // let main = document.querySelector('main')
+    // let card = document.querySelector('#horo-div')
+    // let greeting = document.querySelector('h3.greeting-message')
+    // greeting.remove()
+    // card.remove() 
+    // let horoCard = document.createElement('div')
+    // horoCard.className = "written-horo"
+    // horoCard.innerHTML = `
+    // <h2>${horoscope.title}</h2>
+    // <p>${horoscope.text}</p>`
+    // main.appendChild(horoCard)
+    // console.log(horoCard)
+
+
+    
+}
+
 
 })
